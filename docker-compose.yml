@@ -1,0 +1,30 @@
+version: '3'
+services:
+  app:
+    build: .
+    hostname: app_flask
+    container_name: app_flask
+    restart: always
+    volumes:
+     - .:/root/my_code
+    stdin_open: true
+    ports:
+     - "5000:5000"
+    tty: true
+    networks:
+        - db_backend
+  db:
+    image: postgres:11
+    hostname: db_postgres
+    container_name: db_postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: Mypass.1234
+#user postgres
+#db postgres
+    networks:
+     - db_backend
+
+networks:
+  db_backend:
+    driver: bridge
