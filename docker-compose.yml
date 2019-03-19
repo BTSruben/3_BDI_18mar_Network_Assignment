@@ -20,8 +20,6 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: Mypass.1234
-#user postgres
-#db postgres
     networks:
      - db_backend
 
